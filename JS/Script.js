@@ -41,11 +41,11 @@ const getRandomColorNumber = () => {
 
 const drawDatas = async datas => {
 
-    for(let vector of datas.vectors) {
-        if(!isCollision({x: vector.a.x, y: vector.a.y, width: 100, height: 100})) {
+    for(let square of datas.vectors) {
+        if(!isCollision({x: square.a.x, y: square.a.y, width: 100, height: 100})) {
             ctx.fillStyle = getRandomColor();
-            ctx.fillRect(vector.a.x, vector.a.y, 100, 100);
-            places.push({x: vector.a.x, y: vector.a.y, width: 100, height: 100});
+            ctx.fillRect(square.a.x, square.a.y, 100, 100);
+            places.push({x: square.a.x, y: square.a.y, width: 100, height: 100});
             await wait(300);
         }
     }
