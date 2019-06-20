@@ -16,7 +16,7 @@ const init = (async () => {
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {
             datas = this.responseText;
-            drawDatas(JSON.parse(datas));
+            drawSquares(JSON.parse(datas));
         }
     };
 
@@ -39,7 +39,7 @@ const getRandomColorNumber = () => {
     return Math.floor(Math.random() * 255);
 };
 
-const drawDatas = async datas => {
+const drawSquares = async datas => {
 
     for(let square of datas.vectors) {
         if(!isCollision({x: square.a.x, y: square.a.y, width: 100, height: 100})) {
