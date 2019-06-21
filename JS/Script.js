@@ -9,14 +9,11 @@ let places = [];
 
 const init = (async () => {
 
-    let datas;
-
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         if(this.readyState == 4 && this.status == 200) {
-            datas = this.responseText;
-            drawSquares(JSON.parse(datas));
+            drawSquares(JSON.parse(this.responseText));
         }
     };
 
@@ -53,8 +50,6 @@ const drawSquares = async datas => {
 
 const isCollision = (square) => {
     
-    let isCollision = false;
-
     for(let place of places) {
         if(square.x < place.x + place.width &&
             square.x + square.width > place.x &&
@@ -64,5 +59,5 @@ const isCollision = (square) => {
         }
     }
     
-    return isCollision;
+    return false;
 };
