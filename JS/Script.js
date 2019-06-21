@@ -7,19 +7,19 @@ const ctx = canvas.getContext('2d');
 
 let places = [];
 
+const fetchToJSON = response => {
+    if(response.status === 200) {                
+        return response.json();
+    }
+};
+
 const init = (async () => {
 
-    let xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-            drawSquares(JSON.parse(this.responseText));
-        }
-    };
-
-    xhttp.open('GET', `https://api.noopschallenge.com/vexbot?count=${quantity}`);
-
-    xhttp.send();
+    fetch(`https://api.noopschallenge.com/vexbot?count=${quantity}`)
+        .then(fetchToJSON)
+        .then(data => {
+            drawSquares(data);
+        });
 })();
 
 const wait = milliseconds => {
