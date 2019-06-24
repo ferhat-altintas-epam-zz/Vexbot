@@ -14,7 +14,6 @@ const fetchToJSON = response => {
 };
 
 const init = (async () => {
-
     fetch(`https://api.noopschallenge.com/vexbot?count=${quantity}`)
         .then(fetchToJSON)
         .then(data => {
@@ -37,7 +36,6 @@ const getRandomColorNumber = () => {
 };
 
 const drawSquares = async data => {
-
     for(let square of data.vectors) {
         if(!isCollision({x: square.a.x, y: square.a.y, width: 100, height: 100})) {
             ctx.fillStyle = getRandomColor();
@@ -49,7 +47,6 @@ const drawSquares = async data => {
 };
 
 const isCollision = (square) => {
-    
     for(let place of places) {
         if(square.x < place.x + place.width &&
             square.x + square.width > place.x &&
